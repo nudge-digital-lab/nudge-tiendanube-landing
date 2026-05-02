@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>nudge · Especialistas en Tiendanube</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+```
+:root {
+  --black: #0a0a0a;
+  --white: #ffffff;
+  --gray-100: #f5f5f5;
+  --gray-200: #e8e8e8;
+  --gray-400: #9a9a9a;
+  --gray-600: #555555;
+  --gray-800: #222222;
+  --gold: #b89a5a;
+  --gold-light: #d4b87a;
+  --font: 'Plus Jakarta Sans', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font);
+  background: var(--white);
+  color: var(--black);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── TICKER ── */
+.ticker-wrap {
+  background: var(--black);
+  color: var(--white);
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 10px 0;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.ticker-track {
+  display: inline-block;
+  animation: ticker 30s linear infinite;
+}
+.ticker-track span { margin: 0 40px; }
+.ticker-track .dot { color: var(--gold); }
+@keyframes ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ── NAV ── */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--gray-200);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  height: 64px;
+}
+.nav-logo {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: var(--black);
+  text-decoration: none;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--gray-600);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--black); }
+.nav-cta {
+  background: var(--black) !important;
+  color: var(--white) !important;
+  padding: 9px 20px;
+  border-radius: 6px;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+  transition: background 0.2s !important;
+}
+.nav-cta:hover { background: var(--gray-800) !important; }
+
+/* ── HERO ── */
+.hero {
+  min-height: 92vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 0;
+  padding: 80px 48px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  right: -100px;
+  top: -100px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(184,154,90,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-content { max-width: 600px; }
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--gray-100);
+  border: 1px solid var(--gray-200);
+  border-radius: 100px;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gray-600);
+  margin-bottom: 32px;
+  animation: fadeUp 0.6s ease both;
+}
+.hero-badge::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+}
+.hero h1 {
+  font-size: clamp(42px, 5vw, 68px);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--black);
+  margin-bottom: 24px;
+  animation: fadeUp 0.6s 0.1s ease both;
+}
+.hero h1 em {
+  font-style: normal;
+  color: var(--gold);
+}
+.hero-desc {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--gray-600);
+  margin-bottom: 40px;
+  font-weight: 400;
+  max-width: 480px;
+  animation: fadeUp 0.6s 0.2s ease both;
+}
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  animation: fadeUp 0.6s 0.3s ease both;
+}
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--black);
+  color: var(--white);
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  transition: transform 0.2s, background 0.2s;
+}
+.btn-primary:hover { background: var(--gray-800); transform: translateY(-1px); }
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1.5px solid var(--gray-200);
+  color: var(--black);
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.btn-secondary:hover { border-color: var(--black); transform: translateY(-1px); }
+.hero-stat {
+  margin-top: 52px;
+  display: flex;
+  gap: 40px;
+  animation: fadeUp 0.6s 0.4s ease both;
+}
+.stat-item { }
+.stat-num {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--black);
+}
+.stat-label {
+  font-size: 12px;
+  color: var(--gray-400);
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+/* Hero visual */
+.hero-visual {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  animation: fadeUp 0.8s 0.2s ease both;
+}
+.hero-mockup {
+  width: 100%;
+  max-width: 500px;
+  background: var(--black);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.18);
+  position: relative;
+}
+.mockup-bar {
+  background: #1a1a1a;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.mockup-dot { width: 10px; height: 10px; border-radius: 50%; }
+.mockup-dot:nth-child(1) { background: #ff5f56; }
+.mockup-dot:nth-child(2) { background: #ffbd2e; }
+.mockup-dot:nth-child(3) { background: #27c93f; }
+.mockup-url {
+  flex: 1;
+  background: #2a2a2a;
+  border-radius: 4px;
+  padding: 5px 12px;
+  font-size: 11px;
+  color: var(--gray-400);
+  margin-left: 8px;
+  font-family: monospace;
+}
+.mockup-body {
+  padding: 28px;
+  background: var(--gray-100);
+}
+.mockup-nav {
+  background: var(--black);
+  border-radius: 8px;
+  padding: 14px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.mockup-nav-logo { color: var(--white); font-weight: 800; font-size: 13px; }
+.mockup-nav-links { display: flex; gap: 12px; }
+.mockup-nav-link { width: 30px; height: 6px; background: #444; border-radius: 3px; }
+.mockup-hero-block {
+  background: var(--white);
+  border-radius: 10px;
+  padding: 24px;
+  margin-bottom: 16px;
+}
+.mockup-h { height: 10px; background: var(--black); border-radius: 3px; margin-bottom: 8px; width: 75%; }
+.mockup-h.sm { width: 55%; height: 7px; background: var(--gray-400); }
+.mockup-h.xs { width: 40%; height: 7px; background: var(--gray-400); }
+.mockup-btn-row { display: flex; gap: 8px; margin-top: 16px; }
+.mockup-btn { height: 28px; border-radius: 5px; }
+.mockup-btn.dark { background: var(--black); flex: 1; }
+.mockup-btn.light { background: var(--gray-200); width: 60px; }
+.mockup-cards { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+.mockup-card {
+  background: var(--white);
+  border-radius: 8px;
+  padding: 14px;
+}
+.mockup-card-img { height: 50px; background: var(--gray-200); border-radius: 5px; margin-bottom: 8px; }
+.mockup-card-line { height: 6px; background: var(--gray-200); border-radius: 3px; margin-bottom: 4px; }
+.mockup-card-line.short { width: 60%; }
+.mockup-card-price { height: 8px; background: var(--black); border-radius: 3px; width: 50%; margin-top: 8px; }
+
+/* ── LOGOS STRIP ── */
+.logos-strip {
+  border-top: 1px solid var(--gray-200);
+  border-bottom: 1px solid var(--gray-200);
+  padding: 24px 48px;
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  overflow: hidden;
+}
+.logos-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gray-400);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.logos-list {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+.logo-item {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--gray-400);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* ── SECTION BASE ── */
+section { padding: 100px 48px; }
+.section-tag {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+.section-title {
+  font-size: clamp(30px, 3.5vw, 48px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--black);
+  margin-bottom: 20px;
+}
+.section-desc {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--gray-600);
+  max-width: 540px;
+}
+
+/* ── TIENDANUBE SECTION ── */
+.tn-section {
+  background: var(--gray-100);
+  border-radius: 24px;
+  margin: 0 48px;
+  padding: 80px 80px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.tn-features { display: flex; flex-direction: column; gap: 28px; margin-top: 40px; }
+.tn-feature {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.tn-icon {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  background: var(--black);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+.tn-feature-title { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+.tn-feature-desc { font-size: 14px; color: var(--gray-600); line-height: 1.6; }
+
+.tn-visual {
+  position: relative;
+}
+.tn-badge-img {
+  width: 100%;
+  max-width: 340px;
+  background: var(--white);
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+}
+.tn-badge-text {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gray-600);
+  margin-top: 20px;
+  line-height: 1.5;
+}
+.tn-badge-num {
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--black);
+  letter-spacing: -0.04em;
+  display: block;
+  margin-top: 12px;
+}
+.tn-badge-sub { font-size: 13px; color: var(--gray-400); }
+
+/* ── PRICING ── */
+.pricing-section { background: var(--white); }
+.pricing-header { text-align: center; margin-bottom: 60px; }
+.pricing-header .section-desc { margin: 0 auto; }
+.plans-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.plan-card {
+  border: 1.5px solid var(--gray-200);
+  border-radius: 16px;
+  padding: 28px 22px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.plan-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
+.plan-card.featured {
+  background: var(--black);
+  border-color: var(--black);
+  color: var(--white);
+}
+.plan-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--gold);
+  color: var(--black);
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 4px 12px;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+.plan-name {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gray-400);
+  margin-bottom: 12px;
+}
+.plan-card.featured .plan-name { color: var(--gray-400); }
+.plan-price {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.plan-price span { font-size: 13px; font-weight: 500; color: var(--gray-400); }
+.plan-tagline {
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--gray-600);
+  margin: 14px 0 22px;
+  flex: 1;
+}
+.plan-card.featured .plan-tagline { color: #aaa; }
+.plan-cta {
+  display: block;
+  text-align: center;
+  padding: 11px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+.plan-cta-dark {
+  background: var(--black);
+  color: var(--white);
+  border: 1.5px solid var(--black);
+}
+.plan-cta-dark:hover { background: #333; }
+.plan-cta-white {
+  background: var(--white);
+  color: var(--black);
+  border: 1.5px solid var(--white);
+}
+.plan-cta-white:hover { background: var(--gray-100); }
+.plan-cta-outline {
+  border: 1.5px solid var(--gray-200);
+  color: var(--black);
+}
+.plan-cta-outline:hover { border-color: var(--black); }
+
+.pricing-note {
+  text-align: center;
+  margin-top: 32px;
+  font-size: 13px;
+  color: var(--gray-400);
+}
+.pricing-note strong { color: var(--gold); }
+
+/* ── VENTAJAS ── */
+.ventajas-section { background: var(--gray-100); }
+.ventajas-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.ventajas-list { display: flex; flex-direction: column; gap: 0; margin-top: 36px; }
+.ventaja-item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--gray-200);
+}
+.ventaja-item:last-child { border-bottom: none; }
+.ventaja-arrow {
+  color: var(--gold);
+  font-size: 16px;
+  flex-shrink: 0;
+  margin-top: 1px;
+  font-weight: 700;
+}
+.ventaja-text { font-size: 14px; color: var(--gray-600); line-height: 1.6; }
+.ventaja-text strong { color: var(--black); }
+
+/* Ecosystem cards */
+.eco-cards { display: flex; flex-direction: column; gap: 16px; margin-top: 36px; }
+.eco-card {
+  background: var(--white);
+  border-radius: 14px;
+  padding: 24px;
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  border: 1.5px solid var(--gray-200);
+  transition: border-color 0.2s;
+}
+.eco-card:hover { border-color: var(--black); }
+.eco-icon {
+  width: 44px;
+  height: 44px;
+  background: var(--black);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.eco-title { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+.eco-desc { font-size: 13px; color: var(--gray-600); line-height: 1.6; }
+
+/* ── NUDGE DIFERENCIAL ── */
+.diferencial-section { background: var(--white); }
+.diferencial-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-top: 60px;
+  border: 2px solid var(--black);
+  border-radius: 16px;
+  overflow: hidden;
+}
+.dif-card {
+  padding: 40px 36px;
+  border-right: 2px solid var(--black);
+  background: var(--white);
+  transition: background 0.25s;
+}
+.dif-card:last-child { border-right: none; }
+.dif-card:hover { background: var(--black); }
+.dif-card:hover .dif-title,
+.dif-card:hover .dif-desc { color: var(--white); }
+.dif-card:hover .dif-num { color: var(--gold); }
+.dif-num {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  margin-bottom: 20px;
+  display: block;
+}
+.dif-title { font-size: 20px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 12px; transition: color 0.25s; }
+.dif-desc { font-size: 14px; color: var(--gray-600); line-height: 1.65; transition: color 0.25s; }
+
+/* ── CTA FINAL ── */
+.cta-section {
+  background: var(--black);
+  color: var(--white);
+  text-align: center;
+  padding: 120px 48px;
+  position: relative;
+  overflow: hidden;
+}
+.cta-section::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(184,154,90,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.cta-section .section-title { color: var(--white); position: relative; }
+.cta-section .section-desc { color: rgba(255,255,255,0.5); margin: 0 auto 40px; position: relative; }
+.cta-actions { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; position: relative; }
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--gold);
+  color: var(--black);
+  padding: 15px 32px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 800;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: background 0.2s, transform 0.2s;
+}
+.btn-gold:hover { background: var(--gold-light); transform: translateY(-1px); }
+.btn-white-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1.5px solid rgba(255,255,255,0.3);
+  color: var(--white);
+  padding: 15px 32px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: border-color 0.2s;
+}
+.btn-white-outline:hover { border-color: var(--white); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--black);
+  border-top: 1px solid #1a1a1a;
+  padding: 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.footer-logo { font-size: 22px; font-weight: 800; color: var(--white); letter-spacing: -0.04em; }
+.footer-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: center;
+}
+.footer-info a {
+  font-size: 13px;
+  color: var(--gray-400);
+  text-decoration: none;
+}
+.footer-info a:hover { color: var(--white); }
+.footer-badge {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+}
+.footer-copy { font-size: 12px; color: var(--gray-600); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav { padding: 0 24px; }
+  .nav-links { display: none; }
+  section { padding: 72px 24px; }
+  .hero { grid-template-columns: 1fr; min-height: auto; padding: 60px 24px; }
+  .hero-visual { display: none; }
+  .tn-section { grid-template-columns: 1fr; margin: 0 24px; padding: 48px; gap: 40px; }
+  .plans-grid { grid-template-columns: 1fr 1fr; }
+  .ventajas-grid { grid-template-columns: 1fr; gap: 40px; }
+  .diferencial-grid { grid-template-columns: 1fr; }
+  .dif-card { border-right: none; border-bottom: 2px solid var(--black); }
+  .dif-card:last-child { border-bottom: none; }
+  footer { padding: 32px 24px; }
+  .logos-strip { padding: 20px 24px; gap: 24px; }
+}
+@media (max-width: 600px) {
+  .plans-grid { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 36px; }
+}
+```
+
+  </style>
+</head>
+<body>
+
+  <!-- TICKER -->
+
+  <div class="ticker-wrap">
+    <div class="ticker-track">
+      <span>Especialistas en Tiendanube</span><span class="dot">✦</span>
+      <span>30 días gratis + 25% off en tu primer pago</span><span class="dot">✦</span>
+      <span>Tiendas a medida desde $90.000</span><span class="dot">✦</span>
+      <span>+70 tiendas activas</span><span class="dot">✦</span>
+      <span>Soporte continuo</span><span class="dot">✦</span>
+      <span>Especialistas en Tiendanube</span><span class="dot">✦</span>
+      <span>30 días gratis + 25% off en tu primer pago</span><span class="dot">✦</span>
+      <span>Tiendas a medida desde $90.000</span><span class="dot">✦</span>
+      <span>+70 tiendas activas</span><span class="dot">✦</span>
+      <span>Soporte continuo</span><span class="dot">✦</span>
+    </div>
+  </div>
+
+  <!-- NAV -->
+
+  <nav>
+    <a href="#" class="nav-logo">nudge</a>
+    <ul class="nav-links">
+      <li><a href="#tiendanube">Tiendanube</a></li>
+      <li><a href="#precios">Precios</a></li>
+      <li><a href="#ventajas">Ventajas</a></li>
+      <li><a href="#diferencial">Por qué nudge</a></li>
+      <li><a href="https://nudge.com.ar/planes-mensuales-tiendanube" class="nav-cta">Ver planes nudge</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero" id="inicio">
+    <div class="hero-content">
+      <div class="hero-badge">Agencia especialista Tiendanube</div>
+      <h1>Vendé online con <em>Tiendanube</em></h1>
+      <p class="hero-desc">
+        La plataforma líder de ecommerce en América Latina. Nosotros te armamos la tienda,
+        la configuramos y la gestionamos. Vos te enfocás en vender.
+      </p>
+      <div class="hero-actions">
+        <a href="http://www.tiendanube.com/partners/nudge-digital2" target="_blank" rel="noopener" class="btn-primary">Crear tienda gratis →</a>
+        <a href="https://nudge.com.ar/planes-mensuales-tiendanube" class="btn-secondary">Ver planes nudge</a>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-item">
+          <div class="stat-num">+70</div>
+          <div class="stat-label">Tiendas activas</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">30d</div>
+          <div class="stat-label">Prueba gratis</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">25%</div>
+          <div class="stat-label">Off primer pago</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-mockup">
+        <div class="mockup-bar">
+          <div class="mockup-dot"></div>
+          <div class="mockup-dot"></div>
+          <div class="mockup-dot"></div>
+          <div class="mockup-url">mitienda.com.ar</div>
+        </div>
+        <div class="mockup-body">
+          <div class="mockup-nav">
+            <div class="mockup-nav-logo">MI TIENDA</div>
+            <div class="mockup-nav-links">
+              <div class="mockup-nav-link"></div>
+              <div class="mockup-nav-link"></div>
+              <div class="mockup-nav-link"></div>
+            </div>
+          </div>
+          <div class="mockup-hero-block">
+            <div class="mockup-h"></div>
+            <div class="mockup-h sm"></div>
+            <div class="mockup-h xs"></div>
+            <div class="mockup-btn-row">
+              <div class="mockup-btn dark"></div>
+              <div class="mockup-btn light"></div>
+            </div>
+          </div>
+          <div class="mockup-cards">
+            <div class="mockup-card">
+              <div class="mockup-card-img"></div>
+              <div class="mockup-card-line"></div>
+              <div class="mockup-card-line short"></div>
+              <div class="mockup-card-price"></div>
+            </div>
+            <div class="mockup-card">
+              <div class="mockup-card-img"></div>
+              <div class="mockup-card-line"></div>
+              <div class="mockup-card-line short"></div>
+              <div class="mockup-card-price"></div>
+            </div>
+            <div class="mockup-card">
+              <div class="mockup-card-img"></div>
+              <div class="mockup-card-line"></div>
+              <div class="mockup-card-line short"></div>
+              <div class="mockup-card-price"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOGOS STRIP -->
+
+  <div class="logos-strip">
+    <span class="logos-label">Integrado con</span>
+    <div class="logos-list">
+      <span class="logo-item">MercadoPago</span>
+      <span class="logo-item">EnvíoNube</span>
+      <span class="logo-item">PagoNube</span>
+      <span class="logo-item">OCA</span>
+      <span class="logo-item">Andreani</span>
+      <span class="logo-item">PayPal</span>
+      <span class="logo-item">Meta Ads</span>
+      <span class="logo-item">Google Shopping</span>
+    </div>
+  </div>
+
+  <!-- TIENDANUBE SECTION -->
+
+  <section id="tiendanube" style="padding: 100px 0;">
+    <div class="tn-section">
+      <div>
+        <p class="section-tag">La plataforma</p>
+        <h2 class="section-title">Tiendanube: la base ideal para tu negocio</h2>
+        <p class="section-desc">Con más de 80.000 tiendas activas en América Latina y trayectoria desde 2010, es la plataforma que mejor se adapta a negocios de todos los tamaños.</p>
+        <div class="tn-features">
+          <div class="tn-feature">
+            <div class="tn-icon">🎨</div>
+            <div>
+              <div class="tn-feature-title">Diseño a medida</div>
+              <div class="tn-feature-desc">Templates profesionales o diseño 100% personalizado. Nosotros nos encargamos de que tu tienda refleje tu marca.</div>
+            </div>
+          </div>
+          <div class="tn-feature">
+            <div class="tn-icon">📱</div>
+            <div>
+              <div class="tn-feature-title">Mobile-first</div>
+              <div class="tn-feature-desc">Todos los diseños están optimizados para celulares. Más del 70% de las ventas ocurren desde dispositivos móviles.</div>
+            </div>
+          </div>
+          <div class="tn-feature">
+            <div class="tn-icon">⚡</div>
+            <div>
+              <div class="tn-feature-title">Velocidad de carga optimizada</div>
+              <div class="tn-feature-desc">Tiendanube optimiza la velocidad para que pierdas menos ventas por tiempos de espera. Más velocidad, más conversión.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tn-visual">
+        <div class="tn-badge-img">
+          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--gray-400);">Especialista</div>
+          <div class="tn-badge-num">nudge</div>
+          <div class="tn-badge-sub" style="font-size:12px;color:var(--gray-400);margin-top:4px;">partner certificado Tiendanube</div>
+          <div style="width:48px;height:2px;background:var(--gold);margin:20px auto;"></div>
+          <div class="tn-badge-text">Armamos, configuramos y gestionamos<br/>tu tienda en Tiendanube</div>
+          <a href="http://www.tiendanube.com/partners/nudge-digital2" target="_blank" rel="noopener" style="display:inline-block;margin-top:20px;background:var(--black);color:var(--white);padding:11px 24px;border-radius:8px;font-size:13px;font-weight:700;text-decoration:none;">Empezar ahora</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+
+  <section class="pricing-section" id="precios">
+    <div class="pricing-header">
+      <p class="section-tag">Planes Tiendanube</p>
+      <h2 class="section-title">Elegí el plan ideal para tu negocio</h2>
+      <p class="section-desc">Con nuestro link de referido tenés 30 días gratis y un 25% de descuento en el primer pago, en cualquier modalidad de pago.</p>
+    </div>
+    <div class="plans-grid">
+      <!-- INICIAL -->
+      <div class="plan-card">
+        <div class="plan-name">Inicial</div>
+        <div class="plan-price">Gratis</div>
+        <div class="plan-tagline">Todo lo necesario para dar tus primeros pasos y empezar a vender online.</div>
+        <a href="http://www.tiendanube.com/partners/nudge-digital2" target="_blank" rel="noopener" class="plan-cta plan-cta-dark">Crear tienda gratis</a>
+      </div>
+      <!-- ESENCIAL -->
+      <div class="plan-card featured">
+        <div class="plan-badge">Más elegido</div>
+        <div class="plan-name">Esencial</div>
+        <div class="plan-price">$24.999 <span>ARS/mes</span></div>
+        <div class="plan-tagline">Profesionalizá tu negocio con más herramientas y aumentá tus ventas.</div>
+        <a href="http://www.tiendanube.com/partners/nudge-digital2" target="_blank" rel="noopener" class="plan-cta plan-cta-white">Probar gratis</a>
+      </div>
+      <!-- IMPULSO -->
+      <div class="plan-card">
+        <div class="plan-name">Impulso</div>
+        <div class="plan-price">$73.999 <span>ARS/mes</span></div>
+        <div class="plan-tagline">Automatizá tu negocio y llevá tus ventas al siguiente nivel.</div>
+        <a href="http://www.tiendanube.com/partners/nudge-digital2" target="_blank" rel="noopener" class="plan-cta plan-cta-dark">Probar gratis</a>
+      </div>
+      <!-- ESCALA -->
+      <div class="plan-card">
+        <div class="plan-name">Escala</div>
+        <div class="plan-price">$219.999 <span>ARS/mes</span></div>
+        <div class="plan-tagline">Expandí tu negocio con más herramientas y funciones avanzadas.</div>
+        <a href="http://www.tiendanube.com/partners/nudge-digital2" target="_blank" rel="noopener" class="plan-cta plan-cta-dark">Probar gratis</a>
+      </div>
+      <!-- EVOLUCIÓN -->
+      <div class="plan-card">
+        <div class="plan-name">Evolución</div>
+        <div class="plan-price" style="font-size:20px;">A medida</div>
+        <div class="plan-tagline">Un plan personalizado para tu marca con asesoramiento exclusivo.</div>
+        <a href="mailto:soporte@nudge.com.ar" class="plan-cta plan-cta-outline">Consultanos</a>
+      </div>
+    </div>
+    <p class="pricing-note">Usá nuestro link y obtené <strong>30 días gratis + 25% off</strong> en tu primer pago. Válido para cualquier plan y modalidad de pago.</p>
+  </section>
+
+  <!-- VENTAJAS -->
+
+  <section class="ventajas-section" id="ventajas">
+    <div class="ventajas-grid">
+      <div>
+        <p class="section-tag">Ventajas</p>
+        <h2 class="section-title">¿Por qué elegir Tiendanube?</h2>
+        <div class="ventajas-list">
+          <div class="ventaja-item">
+            <span class="ventaja-arrow">›</span>
+            <span class="ventaja-text"><strong>Fácil de usar:</strong> no necesitás conocimientos técnicos para gestionar tu tienda.</span>
+          </div>
+          <div class="ventaja-item">
+            <span class="ventaja-arrow">›</span>
+            <span class="ventaja-text"><strong>Hosting incluido:</strong> Tiendanube se encarga de toda la infraestructura por vos.</span>
+          </div>
+          <div class="ventaja-item">
+            <span class="ventaja-arrow">›</span>
+            <span class="ventaja-text"><strong>+10 integraciones de envíos:</strong> OCA, Andreani, EnvíoNube y más.</span>
+          </div>
+          <div class="ventaja-item">
+            <span class="ventaja-arrow">›</span>
+            <span class="ventaja-text"><strong>Medios de pago locales:</strong> MercadoPago, PagoNube, PayPal, Todo Pago y más.</span>
+          </div>
+          <div class="ventaja-item">
+            <span class="ventaja-arrow">›</span>
+            <span class="ventaja-text"><strong>Multicanal:</strong> gestioná ventas desde tu tienda, redes sociales y marketplaces.</span>
+          </div>
+          <div class="ventaja-item">
+            <span class="ventaja-arrow">›</span>
+            <span class="ventaja-text"><strong>App store:</strong> automatizaciones, marketing, catálogo y gestión en un clic.</span>
+          </div>
+          <div class="ventaja-item">
+            <span class="ventaja-arrow">›</span>
+            <span class="ventaja-text"><strong>Actualizaciones constantes:</strong> la plataforma mejora cada semana sin que tengas que hacer nada.</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p class="section-tag">Ecosistema</p>
+        <h2 class="section-title">Todo lo que necesitás para crecer</h2>
+        <div class="eco-cards">
+          <div class="eco-card">
+            <div class="eco-icon">💳</div>
+            <div>
+              <div class="eco-title">Medios de pago y envío</div>
+              <div class="eco-desc">Integraciones rápidas con cobros, logística y operaciones necesarias para vender en Argentina y Latam.</div>
+            </div>
+          </div>
+          <div class="eco-card">
+            <div class="eco-icon">🔌</div>
+            <div>
+              <div class="eco-title">App ecosystem</div>
+              <div class="eco-desc">Extendé la tienda con aplicaciones, automatizaciones y herramientas para marketing, catálogo y gestión.</div>
+            </div>
+          </div>
+          <div class="eco-card">
+            <div class="eco-icon">📈</div>
+            <div>
+              <div class="eco-title">Escalable sin límites</div>
+              <div class="eco-desc">Funciona para empezar rápido pero también para seguir creciendo sin rehacer toda la base del negocio.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIFERENCIAL NUDGE -->
+
+  <section class="diferencial-section" id="diferencial">
+    <div style="text-align:center;margin-bottom:0;">
+      <p class="section-tag">Por qué nudge</p>
+      <h2 class="section-title">No solo configuramos la tienda.<br/>Construimos tu negocio digital.</h2>
+    </div>
+    <div class="diferencial-grid">
+      <div class="dif-card">
+        <span class="dif-num">01</span>
+        <div class="dif-title">Diseño que vende</div>
+        <div class="dif-desc">Cada tienda tiene una estética propia diseñada para reflejar tu marca y convertir visitas en ventas. Nada genérico.</div>
+      </div>
+      <div class="dif-card">
+        <span class="dif-num">02</span>
+        <div class="dif-title">Lanzamiento rápido</div>
+        <div class="dif-desc">Armamos tu tienda completa y lista para vender. Sin demoras, sin idas y vueltas interminables. Directo al punto.</div>
+      </div>
+      <div class="dif-card">
+        <span class="dif-num">03</span>
+        <div class="dif-title">Gestión continua</div>
+        <div class="dif-desc">Tenemos planes de gestión mensual para que tu tienda no quede estática. Mejoras, actualizaciones y soporte real.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+
+  <section class="cta-section">
+    <p class="section-tag" style="color:var(--gold);">Empezá ahora</p>
+    <h2 class="section-title">¿Listo para vender online?</h2>
+    <p class="section-desc">Creá tu tienda con Tiendanube, con 30 días gratis y 25% off en el primer pago. Nosotros te acompañamos en cada paso.</p>
+    <div class="cta-actions">
+      <a href="http://www.tiendanube.com/partners/nudge-digital2" target="_blank" rel="noopener" class="btn-gold">Crear tienda gratis →</a>
+      <a href="mailto:soporte@nudge.com.ar" class="btn-white-outline">Consultar a nudge</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+    <span class="footer-logo">nudge</span>
+    <div class="footer-info">
+      <a href="mailto:soporte@nudge.com.ar">soporte@nudge.com.ar</a>
+      <span class="footer-badge">Especialista Tiendanube · nudge.com.ar</span>
+    </div>
+    <span class="footer-copy">© 2026 nudge</span>
+  </footer>
+
+</body>
+</html>
